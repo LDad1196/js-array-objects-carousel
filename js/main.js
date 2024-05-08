@@ -22,3 +22,32 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+// 1: Inserire tutte le slide visibili
+for (const slide of images) {
+
+    let slideHtml = `
+    <div class="slide active">
+        <img class="img" src="${slide.image}" alt="">
+        <h2>${slide.title}</h2>
+        <p>${slide.text}</p>
+    </div> `;
+
+    document.getElementById("contain").innerHTML += slideHtml;
+
+    console.log(slideHtml);
+}
+
+// Altri tipi di for
+// for (let i = 0; i < images.length; i++) {
+//     const slide = images [i];
+//     console.log(slide)
+    
+// }
+
+// images.forEach(function(slide, i){
+//     console.log( "for each of.." slide)
+
+    
+// })
+
+// 2: Modifico il ciclo così che ssiano invisibili le altre
