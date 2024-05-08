@@ -23,31 +23,41 @@ const images = [
     }
 ];
 // 1: Inserire tutte le slide visibili
+const containerEl = document.getElementById("contain")
+
 for (const slide of images) {
 
     let slideHtml = `
-    <div class="slide active">
+    <div class="slide">
         <img class="img" src="${slide.image}" alt="">
         <h2>${slide.title}</h2>
         <p>${slide.text}</p>
     </div> `;
 
-    document.getElementById("contain").innerHTML += slideHtml;
+    containerEl.innerHTML += slideHtml;
 
-    console.log(slideHtml);
 }
 
-// Altri tipi di for
-// for (let i = 0; i < images.length; i++) {
-//     const slide = images [i];
-//     console.log(slide)
+// 2: Modifico il ciclo così che siano invisibili le altre
+let slideSelected = 0
+document.querySelectorAll(".slide")[0].classList.add("active")
+
+// 3: AL click rendi visibile la prossima
+document.getElementById("next"),addEventListener("click", function(){
     
-// }
-
-// images.forEach(function(slide, i){
-//     console.log( "for each of.." slide)
+    const indiceUltimaSlide = images.length - 1;
+    document.querySelectorAll(".slide")[slideSelected].classList.remove("active")
+    document.querySelectorAll(".slide")[slideSelected+1].classList.add("active")
+    slideSelected++;
 
     
-// })
 
-// 2: Modifico il ciclo così che ssiano invisibili le altre
+})            
+
+
+// 3: AL click rendi visibile la precedente
+document.getElementById("previous"),addEventListener("click", function(){
+    document.querySelectorAll(".slide")[slideSelected].classList.add("active")
+    document.querySelectorAll(".slide")[slideSelected-1].classList.remove("active")
+    slideSelected--;
+})  
