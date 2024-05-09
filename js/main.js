@@ -42,22 +42,38 @@ for (const slide of images) {
 let slideSelected = 0
 document.querySelectorAll(".slide")[0].classList.add("active")
 
-// 3: AL click rendi visibile la prossima
-document.getElementById("next"),addEventListener("click", function(){
-    
-    const indiceUltimaSlide = images.length - 1;
-    document.querySelectorAll(".slide")[slideSelected].classList.remove("active")
-    document.querySelectorAll(".slide")[slideSelected+1].classList.add("active")
-    slideSelected++;
+// Al click sulla freccia andiamo alla slide precedente
+document.getElementById("previous").addEventListener("click", function() {
+	console.log("Hai cliccato su #btnPrev");
 
-    
+	const indiceUltimaSlide = images.length - 1;
 
-})            
+    // Im
+	document.querySelectorAll(".slide")[slideSelected].classList.remove("active");
 
+	if( slideSelected <= 0 ){
+		slideSelected = indiceUltimaSlide;
+	} else {
+		slideSelected--;
+	}
 
-// 3: AL click rendi visibile la precedente
-document.getElementById("previous"),addEventListener("click", function(){
-    document.querySelectorAll(".slide")[slideSelected].classList.add("active")
-    document.querySelectorAll(".slide")[slideSelected-1].classList.remove("active")
-    slideSelected--;
-})  
+	document.querySelectorAll(".slide")[slideSelected].classList.add("active");
+});
+ 
+// Al click sulle frecce cambiamo slide (next)
+document.getElementById("next").addEventListener("click", function() {
+	console.log("Hai cliccato su #btnNext");
+
+	const indiceUltimaSlide = images.length - 1;
+	
+	document.querySelectorAll(".slide")[slideSelected].classList.remove("active");
+
+	if( slideSelected >= indiceUltimaSlide ){
+		slideSelected = 0;
+	} else {
+		slideSelected++;
+	}
+
+	document.querySelectorAll(".slide")[slideSelected].classList.add("active");
+
+});
